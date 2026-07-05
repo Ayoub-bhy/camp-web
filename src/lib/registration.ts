@@ -43,16 +43,32 @@ export function validate(r: Registration): FieldError[] {
   return errors;
 }
 
-/** Structured Arabic WhatsApp message. Contains ONLY the §4 fields + consent flags. */
-export function buildRegistrationMessage(r: Registration): string {
+/** Pseudonymized identity generated at submit time (NUT-104 v2). */
+export interface ChildIdentity {
+  code: string;
+  nickname: string;
+  /** RSA-OAEP blob of the real first name; absent until camp public key configured. */
+  encryptedName?: string;
+}
+
+/**
+ * Structured Arabic WhatsApp message — v2 (founder spec Jul 5).
+ * NEVER contains the child's plaintext name: child code + camp nickname
+ * identify the child; the real name travels only as an encrypted blob
+ * (decryptable solely by the founder's offline private key).
+ */
+export function buildRegistrationMessage(r: Registration, id: ChildIdentity): string {
   const phone = normalizePhone(r.parentPhone) ?? r.parentPhone;
-  return [
+  const lines = [
     "تسجيل جديد في المخيم الصيفي ✅",
-    `اسم الطفل: ${r.childFirstName.trim()}`,
+    `رمز الطفل: ${id.code}`,
+    `لقب المخيم: ${id.nickname}`,
     `العمر: ${r.childAge}`,
     `اسم ولي الأمر: ${r.parentName.trim()}`,
     `جوال ولي الأمر: ${phone}`,
     `الموافقة (مشاركة + تسجيل + بيانات): نعم`,
     `الموافقة على الاستخدام الإعلامي: ${r.mediaOptIn ? "نعم" : "لا"}`,
-  ].join("\n");
+  ];
+  if (id.encryptedName) lines.push(`الاسم (مشفّر، للمؤسس فقط): ${id.encryptedName}`);
+  return lines.join("\n");
 }
