@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>التسجيل في المخيم الصيفي</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="badge">١٦ – ٢٧ أغسطس ٢٠٢٦ · للأعمار ٧–١٠</p>
+      <h1>تسجيل طفلك في المخيم</h1>
+      <p class="sub">
+        نطلب الحد الأدنى فقط من المعلومات. لا حسابات للأطفال، ولا نجمع أي بيانات
+        إضافية.
+      </p>
+    </header>
+
+    <section aria-label="نموذج التسجيل">
+      <form id="reg-form" class="card reg-form" novalidate>
+        <label>
+          الاسم الأول للطفل
+          <input name="childFirstName" type="text" autocomplete="off" required />
+          <small class="err" data-err="childFirstName">اكتبي الاسم الأول فقط (حرفان على الأقل)</small>
+        </label>
+
+        <label>
+          عمر الطفل
+          <select name="childAge" required>
+            <option value="">اختاري العمر</option>
+            <option value="7">٧ سنوات</option>
+            <option value="8">٨ سنوات</option>
+            <option value="9">٩ سنوات</option>
+            <option value="10">١٠ سنوات</option>
+          </select>
+          <small class="err" data-err="childAge">المخيم لهذه الدورة للأعمار ٧–١٠</small>
+        </label>
+
+        <label>
+          اسم ولي الأمر
+          <input name="parentName" type="text" autocomplete="name" required />
+          <small class="err" data-err="parentName">فضلاً أدخلي الاسم</small>
+        </label>
+
+        <label>
+          جوال ولي الأمر (واتساب)
+          <input name="parentPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx أو 07xxxxxxxx" required />
+          <small class="err" data-err="parentPhone">رقم سعودي (05…) أو أردني (07…) صحيح</small>
+        </label>
+
+        <fieldset class="consent">
+          <legend>الموافقة</legend>
+          <label class="check">
+            <input name="consent" type="checkbox" />
+            <span>
+              أوافق على مشاركة طفلي في جلسات المخيم، وعلى <strong>تسجيل الجلسات</strong>
+              لأغراض السلامة (يدخل الأطفال بعد بدء التسجيل)، وعلى استخدام البيانات
+              أعلاه للتواصل وإدارة المخيم فقط. لا تُشارك البيانات مع أي جهة أخرى،
+              وتُحذف بعد انتهاء البرنامج بـ٩٠ يوماً.
+            </span>
+          </label>
+          <small class="err" data-err="consent">الموافقة مطلوبة لإتمام التسجيل</small>
+
+          <label class="check optin">
+            <input name="mediaOptIn" type="checkbox" />
+            <span>
+              (اختياري — يمكن تركه فارغاً) أسمح باستخدام لقطات قد يظهر فيها طفلي في
+              منشورات المخيم التعريفية.
+            </span>
+          </label>
+        </fieldset>
+
+        <button class="cta" type="submit">أكملي التسجيل عبر واتساب</button>
+        <p class="hint">
+          بالضغط ينفتح واتساب برسالة جاهزة تحتوي بياناتك — أرسليها وسنكمل معك
+          خطوة الدفع. لا يُحفظ أي شيء على هذه الصفحة.
+        </p>
+      </form>
+    </section>
+
+    <footer>
+      <p>نجمع فقط: الاسم الأول للطفل، عمره، اسم ولي الأمر، رقم الجوال. لا شيء آخر.</p>
+    </footer>
+
+    <script type="module" src="/src/registration-page.ts"></script>
+  </body>
+</html>
