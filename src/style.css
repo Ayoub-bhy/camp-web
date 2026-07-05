@@ -149,3 +149,7 @@ footer a { color: var(--brand-dark); font-weight: 700; }
 .reg-form .optin { margin-top: 0.75rem; color: var(--muted); }
 .err { display: none; color: #dc2626; font-weight: 400; }
 .err.show { display: block; }
+
+/* Nickname confirmation (NUT-104 v2) */
+.nickname-confirm { display: none; background: #ecfdf5; border-radius: 12px; padding: 1rem; text-align: center; }
+.nickname-confirm.show { display: block; }
