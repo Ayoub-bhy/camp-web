@@ -10,9 +10,11 @@ If the custom form isn't QA-passed by Jul 20, enrollment runs on this Tally form
 - Disable: response editing, Tally branding if on paid plan (optional)
 - **Email notifications:** to founder only. No third-party integrations (no Sheets/Zapier — keeps child data inside Tally + WhatsApp only).
 
-## Fields — EXACTLY these, nothing more (checklist §4)
+## Fields — EXACTLY these, nothing more (checklist §4 + v2 pseudonymization)
 
-1. الاسم الأول للطفل — short text, required
+**v2 (founder, Jul 5): the fallback stores NICKNAME ONLY — never the child's real name.** Identity confirmation happens with the parent over WhatsApp.
+
+1. لقب مرح لطفلك في المخيم (لا تكتبي اسمه الحقيقي) — short text, required, with helper text «مثال: نجم أزرق»
 2. عمر الطفل — dropdown: ٧ / ٨ / ٩ / ١٠, required
 3. اسم ولي الأمر — short text, required
 4. جوال ولي الأمر (واتساب) — phone, required

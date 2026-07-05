@@ -47,17 +47,28 @@ describe("validate", () => {
   });
 });
 
-describe("buildRegistrationMessage", () => {
-  it("contains only the capped fields + consent flags", () => {
-    const msg = buildRegistrationMessage(valid);
-    expect(msg).toContain("سارة");
+describe("buildRegistrationMessage (v2 — pseudonymized)", () => {
+  const id = { code: "CP-AB23-CD45", nickname: "نجم أزرق" };
+
+  it("NEVER contains the child's plaintext name (founder spec Jul 5)", () => {
+    const msg = buildRegistrationMessage(valid, id);
+    expect(msg).not.toContain("سارة");
+    expect(msg).toContain("CP-AB23-CD45");
+    expect(msg).toContain("نجم أزرق");
     expect(msg).toContain("+966501234567");
-    expect(msg).toContain("الاستخدام الإعلامي: لا");
-    // exactly 7 lines — nothing extra can sneak in
-    expect(msg.split("\n")).toHaveLength(7);
+    // exactly 8 lines without encrypted blob — nothing extra can sneak in
+    expect(msg.split("\n")).toHaveLength(8);
   });
+
+  it("appends the encrypted blob line when key configured (9 lines)", () => {
+    const msg = buildRegistrationMessage(valid, { ...id, encryptedName: "QUJD…" });
+    expect(msg.split("\n")).toHaveLength(9);
+    expect(msg).toContain("مشفّر");
+    expect(msg).not.toContain("سارة");
+  });
+
   it("media opt-in default stays OFF unless explicitly set", () => {
-    expect(buildRegistrationMessage({ ...valid, mediaOptIn: true })).toContain(
+    expect(buildRegistrationMessage({ ...valid, mediaOptIn: true }, id)).toContain(
       "الاستخدام الإعلامي: نعم",
     );
   });

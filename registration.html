@@ -6,8 +6,30 @@
     <meta name="robots" content="noindex" />
     <title>التسجيل في المخيم الصيفي</title>
     <link rel="stylesheet" href="/src/style.css" />
+    <!-- Google Tag Manager (NUT-144, container GTM-TGFC6FV) -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TGFC6FV");
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TGFC6FV"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <header class="hero">
       <p class="badge">١٦ – ٢٧ أغسطس ٢٠٢٦ · للأعمار ٧–١٠</p>
       <h1>تسجيل طفلك في المخيم</h1>
@@ -73,9 +95,11 @@
 
         <button class="cta" type="submit">أكملي التسجيل عبر واتساب</button>
         <p class="hint">
-          بالضغط ينفتح واتساب برسالة جاهزة تحتوي بياناتك — أرسليها وسنكمل معك
-          خطوة الدفع. لا يُحفظ أي شيء على هذه الصفحة.
+          بالضغط ينفتح واتساب برسالة جاهزة — أرسليها وسنكمل معك خطوة الدفع.
+          حمايةً لخصوصية طفلك، يظهر في المخيم بلقب مرح ورمز تسجيل بدل اسمه —
+          اسمه الحقيقي لا يُرسل إلا مشفّراً. لا يُحفظ أي شيء على هذه الصفحة.
         </p>
+        <p id="nickname-confirm" class="nickname-confirm" aria-live="polite"></p>
       </form>
     </section>
 

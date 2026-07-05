@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         registration: "registration.html",
+        goWa: "go/wa/index.html",
       },
     },
   },
