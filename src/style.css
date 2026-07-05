@@ -1,0 +1,137 @@
+:root {
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --brand: #0d9488;
+  --brand-dark: #0f766e;
+  --accent: #f59e0b;
+  --bg: #fffdf8;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Tahoma, "Noto Kufi Arabic", "Noto Sans Arabic", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.7;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.25rem 3rem;
+  background: linear-gradient(180deg, #ecfdf5, var(--bg));
+}
+
+.hero h1 {
+  font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+  margin: 0.75rem auto;
+  max-width: 22ch;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  font-size: 0.9rem;
+}
+
+.sub {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 auto 1.5rem;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--accent);
+  color: #1c1917;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 14px rgb(245 158 11 / 35%);
+}
+
+.cta:hover { filter: brightness(1.05); }
+
+.hint { font-size: 0.85rem; color: var(--muted); margin-top: 0.75rem; }
+
+section { padding: 2.5rem 1.25rem; max-width: 960px; margin: 0 auto; }
+
+h2 { text-align: center; font-size: 1.6rem; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.card h3 { margin-top: 0; }
+
+.program ul {
+  max-width: 48ch;
+  margin: 1rem auto 0;
+  padding-inline-start: 1.5rem;
+}
+
+.teachers .sub { text-align: center; }
+
+.video-ph {
+  background: #f3f4f6;
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.pricing { text-align: center; }
+
+.price .old {
+  text-decoration: line-through;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.price .now {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--brand-dark);
+  margin: 0.25rem 0;
+}
+
+.price .tag { color: var(--accent); font-weight: 700; margin-top: 0; }
+
+.seats { font-size: 1.1rem; }
+
+.guarantee {
+  background: #ecfdf5;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 56ch;
+  margin: 1rem auto 1.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.25rem 3rem;
+  color: var(--muted);
+  border-top: 1px solid #e5e7eb;
+  margin-top: 2rem;
+}
+
+footer a { color: var(--brand-dark); font-weight: 700; }
