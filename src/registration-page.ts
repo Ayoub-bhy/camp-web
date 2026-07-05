@@ -7,8 +7,19 @@ import {
   type FieldError,
   type Registration,
 } from "./lib/registration";
+import { track } from "./lib/track";
 
 const form = document.querySelector<HTMLFormElement>("#reg-form");
+
+// NUT-144: InitiateCheckout once, on first interaction with the form.
+// Payload is whitelist-filtered — form VALUES never enter events.
+let started = false;
+form?.addEventListener("focusin", () => {
+  if (!started) {
+    started = true;
+    track("InitiateCheckout", {});
+  }
+});
 
 function readForm(f: HTMLFormElement): Registration {
   const data = new FormData(f);
@@ -34,6 +45,7 @@ form?.addEventListener("submit", (e) => {
   const errors = validate(reg);
   showErrors(errors);
   if (errors.length > 0) return;
+  track("CompleteRegistration", {}); // no form values — §4 guardrail
   const msg = buildRegistrationMessage(reg);
   window.open(
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,

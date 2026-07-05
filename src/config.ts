@@ -10,6 +10,12 @@ export const WHATSAPP_MESSAGE =
 /** Seats already sold in the early-bird allocation. Updated manually at pilot volumes. */
 export const EARLY_BIRD_SOLD = 0;
 
+/** GTM container (founder's — real ID per NUT-144, not a placeholder). */
+export const GTM_ID = "GTM-TGFC6FV";
+
+/** First-party events endpoint (NUT-144 layer 2). Empty = beacon disabled. */
+export const EVENTS_ENDPOINT = ""; // TODO(founder): set after hosting decision, e.g. https://<domain>/events
+
 export function whatsappLink(
   number: string = WHATSAPP_NUMBER,
   message: string = WHATSAPP_MESSAGE,
