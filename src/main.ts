@@ -7,7 +7,7 @@ import { track } from "./lib/track";
 // All CTAs → first-party /go/wa redirect (NUT-144: Lead logged, then wa.me).
 document.querySelectorAll<HTMLAnchorElement>("a[data-wa]").forEach((a) => {
   const src = a.dataset.src ?? "landing";
-  a.href = `/go/wa/?src=${encodeURIComponent(src)}`;
+  a.href = `${import.meta.env.BASE_URL}go/wa/?src=${encodeURIComponent(src)}`;
 });
 
 // Early-bird seats-left counter (trust asset, counters R12).
