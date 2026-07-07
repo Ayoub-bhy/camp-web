@@ -2,7 +2,7 @@
  * Landing config — single place for founder-editable values.
  * FOUNDER INPUT NEEDED: real WhatsApp Business number before launch (NUT-115).
  */
-export const WHATSAPP_NUMBER = "9665XXXXXXXX"; // TODO(founder): WhatsApp Business number, digits only
+export const WHATSAPP_NUMBER = "905349761550"; // WhatsApp Business number (set Jul 2026)
 
 export const WHATSAPP_MESSAGE =
   "مرحباً، أرغب بتسجيل طفلي في المخيم الصيفي 🌟";

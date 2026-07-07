@@ -34,3 +34,30 @@ const observer = new IntersectionObserver(
 document.querySelector(".pricing")?.setAttribute("data-track", "pricing");
 document.querySelector(".teachers")?.setAttribute("data-track", "teachers");
 document.querySelectorAll("[data-track]").forEach((el) => observer.observe(el));
+
+// Salla redesign: subtle scroll-reveal (progressive enhancement; no-JS shows all).
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!prefersReduced && "IntersectionObserver" in window) {
+  const revealEls = document.querySelectorAll<HTMLElement>(
+    ".card, .program li, .guarantee, section > h2",
+  );
+  revealEls.forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(26px)";
+    el.style.transition =
+      "opacity .6s cubic-bezier(0.175,0.885,0.32,1.275), transform .6s cubic-bezier(0.175,0.885,0.32,1.275)";
+  });
+  const revealObs = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const el = e.target as HTMLElement;
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+        revealObs.unobserve(el);
+      }
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+  );
+  revealEls.forEach((el) => revealObs.observe(el));
+}
